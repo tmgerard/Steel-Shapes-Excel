@@ -1,5 +1,5 @@
 Attribute VB_Name = "SteelConstants"
-'@Folder("SteelShapes")
+'@Folder("SteelShapes.Data")
 Option Explicit
 
 Public Const ElasticModulus As Double = 29000000       ' psi
