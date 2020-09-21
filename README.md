@@ -1,7 +1,7 @@
 # Steel Shapes Excel
 The purpose of this project is to create a library for the creation of rolled steel shapes and built-up sections in VBA.
 ## Goal
-The goal of this project is to create a simple to use library that can be used in steel design programs built in Microsoft Excel. This project is also being used as a demonstration for my engineering colleague who are interested in learning VBA.
+The goal of this project is to create a simple to use library that can be used in steel design programs built in Microsoft Excel. This project is also being used as a demonstration for my engineering colleagues who are interested in learning VBA.
 ## Desired Features
 * Create objects based on data found in the AISC Steel Manual
 * Create built-up steel section objects (plate girders for example)
