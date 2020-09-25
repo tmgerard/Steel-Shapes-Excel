@@ -38,7 +38,7 @@ Attribute FlangeWidth.VB_Description = "Width of rolled I-shape flanges"
 End Property
 
 '@Description "Retrieve a property of the rolled I-shape"
-Public Function GetProperty(ByVal propertyName As String) As Variant
+Public Function GetProperty(ByRef propertyName As String) As Variant
 Attribute GetProperty.VB_Description = "Retrieve a property of the rolled I-shape"
 End Function
 
@@ -88,8 +88,8 @@ Attribute Sy.VB_Description = "Elastic section modulus about the y-axis"
 End Property
 
 '@Description "Type of rolled I-shape (W, M, S, or HP)"
-Public Property Get SectionType() As String
-Attribute SectionType.VB_Description = "Type of rolled I-shape (W, M, S, or HP)"
+Public Property Get ShapeType() As String
+Attribute ShapeType.VB_Description = "Type of rolled I-shape (W, M, S, or HP)"
 End Property
 
 '@Description "Thickness of rolled I-shape web"
