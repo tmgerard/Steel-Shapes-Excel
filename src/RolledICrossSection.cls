@@ -13,7 +13,9 @@ Implements IRolledICrossSection
 
 Private properties As Object
 
-Public Sub Create(ByVal shapeProperties As Object)
+Public Sub Create(ByVal shapeGetter As IRolledShapeGetter, ByRef shapeName As String)
+    Dim shapeProperties As Object
+    Set shapeProperties = shapeGetter.GetRolledShape(shapeName)
     If Not TypeOf shapeProperties Is Dictionary Then
         ' TODO: throw an error
     End If
