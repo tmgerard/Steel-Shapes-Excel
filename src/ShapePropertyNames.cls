@@ -256,7 +256,7 @@ End Property
 
 Public Property Get TanAlpha() As String
     Const alphaCharacterCode As Long = 945
-    TanAlpha = "tan(" & ChrW(alphaCharacterCode) & ")"
+    TanAlpha = "tan(" & ChrW$(alphaCharacterCode) & ")"
 End Property
 
 Public Property Get WAxisMomentOfInertia() As String
