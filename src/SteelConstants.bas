@@ -1,4 +1,5 @@
 Attribute VB_Name = "SteelConstants"
+'@IgnoreModule ConstantNotUsed
 '@Folder("SteelShapes.Data")
 Option Explicit
 

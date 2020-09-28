@@ -1,4 +1,5 @@
 Attribute VB_Name = "RolledICrossSectionTests"
+'@IgnoreModule VariableNotUsed, EmptyMethod, LineLabelNotUsed
 Option Explicit
 Option Private Module
 
@@ -14,7 +15,7 @@ Option Private Module
 #End If
 
 Private shapeGetter As IRolledShapeGetter
-Private iShape As IRolledICrossSection
+Private interfaceShape As IRolledICrossSection
 
 '@ModuleInitialize
 Private Sub ModuleInitialize()
@@ -36,7 +37,7 @@ Private Sub ModuleInitialize()
     shape.Create shapeGetter, "W44X335"
     
     ' the interface exposes the properties
-    Set iShape = shape
+    Set interfaceShape = shape
 End Sub
 
 '@ModuleCleanup
@@ -45,7 +46,7 @@ Private Sub ModuleCleanup()
     Set Assert = Nothing
     ' Set Fakes = Nothing
     Set shapeGetter = Nothing
-    Set iShape = Nothing
+    Set interfaceShape = Nothing
 End Sub
 
 '@TestInitialize
@@ -68,7 +69,7 @@ Private Sub TestGetArea()
     'Act:
 
     'Assert:
-    Assert.AreEqual Expected, iShape.Area
+    Assert.AreEqual Expected, interfaceShape.Area
 
 TestExit:
     Exit Sub
@@ -86,7 +87,7 @@ Private Sub TestGetWarpingConstant()
     'Act:
 
     'Assert:
-    Assert.AreEqual Expected, iShape.Cw
+    Assert.AreEqual Expected, interfaceShape.Cw
 
 TestExit:
     Exit Sub
@@ -104,7 +105,7 @@ Private Sub TestGetDepth()
     'Act:
 
     'Assert:
-    Assert.AreEqual Expected, iShape.Depth
+    Assert.AreEqual Expected, interfaceShape.Depth
 
 TestExit:
     Exit Sub
@@ -122,7 +123,7 @@ Private Sub TestGetFlangeThickness()
     'Act:
 
     'Assert:
-    Assert.AreEqual Expected, iShape.FlangeThickness
+    Assert.AreEqual Expected, interfaceShape.FlangeThickness
 
 TestExit:
     Exit Sub
@@ -140,7 +141,7 @@ Private Sub TestGetFlangeWidth()
     'Act:
 
     'Assert:
-    Assert.AreEqual Expected, iShape.FlangeWidth
+    Assert.AreEqual Expected, interfaceShape.FlangeWidth
 
 TestExit:
     Exit Sub
@@ -158,7 +159,7 @@ Private Sub TestGetProperty()
     'Act:
 
     'Assert:
-    Assert.AreEqual Expected, iShape.GetProperty(ShapePropertyNames.FlangeWidth)
+    Assert.AreEqual Expected, interfaceShape.GetProperty(ShapePropertyNames.FlangeWidth)
 
 TestExit:
     Exit Sub
@@ -175,7 +176,8 @@ Private Sub TestGetPropertyKeyDoesNotExist()
     Dim property As Variant
     
     'Act:
-    property = iShape.GetProperty("z")
+    '@Ignore AssignmentNotUsed
+    property = interfaceShape.GetProperty("z")
 
 Assert:
     Assert.Fail "Expected error was not raised"
@@ -200,7 +202,7 @@ Private Sub TestGetIx()
     'Act:
 
     'Assert:
-    Assert.AreEqual Expected, iShape.Ix
+    Assert.AreEqual Expected, interfaceShape.Ix
 
 TestExit:
     Exit Sub
@@ -218,7 +220,7 @@ Private Sub TestGetIy()
     'Act:
 
     'Assert:
-    Assert.AreEqual Expected, iShape.Iy
+    Assert.AreEqual Expected, interfaceShape.Iy
 
 TestExit:
     Exit Sub
@@ -236,7 +238,7 @@ Private Sub TestGetJ()
     'Act:
 
     'Assert:
-    Assert.AreEqual Expected, iShape.J
+    Assert.AreEqual Expected, interfaceShape.J
 
 TestExit:
     Exit Sub
@@ -254,7 +256,7 @@ Private Sub TestGetName()
     'Act:
 
     'Assert:
-    Assert.AreEqual Expected, iShape.Name
+    Assert.AreEqual Expected, interfaceShape.Name
 
 TestExit:
     Exit Sub
@@ -272,7 +274,7 @@ Private Sub TestGetNominalWeight()
     'Act:
 
     'Assert:
-    Assert.AreEqual Expected, iShape.NominalWeight
+    Assert.AreEqual Expected, interfaceShape.NominalWeight
 
 TestExit:
     Exit Sub
@@ -290,7 +292,7 @@ Private Sub TestGetXRadiusOfGyration()
     'Act:
 
     'Assert:
-    Assert.AreEqual Expected, iShape.rx
+    Assert.AreEqual Expected, interfaceShape.rx
 
 TestExit:
     Exit Sub
@@ -308,7 +310,7 @@ Private Sub TestGetYRadiusOfGyration()
     'Act:
 
     'Assert:
-    Assert.AreEqual Expected, iShape.ry
+    Assert.AreEqual Expected, interfaceShape.ry
 
 TestExit:
     Exit Sub
@@ -326,7 +328,7 @@ Private Sub TestGetShapeType()
     'Act:
 
     'Assert:
-    Assert.AreEqual Expected, iShape.ShapeType
+    Assert.AreEqual Expected, interfaceShape.ShapeType
 
 TestExit:
     Exit Sub
@@ -344,7 +346,7 @@ Private Sub TestGetSx()
     'Act:
 
     'Assert:
-    Assert.AreEqual Expected, iShape.Sx
+    Assert.AreEqual Expected, interfaceShape.Sx
 
 TestExit:
     Exit Sub
@@ -362,7 +364,7 @@ Private Sub TestGetSy()
     'Act:
 
     'Assert:
-    Assert.AreEqual Expected, iShape.Sy
+    Assert.AreEqual Expected, interfaceShape.Sy
 
 TestExit:
     Exit Sub
@@ -380,7 +382,7 @@ Private Sub TestGetWebThickness()
     'Act:
 
     'Assert:
-    Assert.AreEqual Expected, iShape.WebThickness
+    Assert.AreEqual Expected, interfaceShape.WebThickness
 
 TestExit:
     Exit Sub
@@ -398,7 +400,7 @@ Private Sub TestGetZx()
     'Act:
 
     'Assert:
-    Assert.AreEqual Expected, iShape.Zx
+    Assert.AreEqual Expected, interfaceShape.Zx
 
 TestExit:
     Exit Sub
@@ -416,7 +418,7 @@ Private Sub TestGetZy()
     'Act:
 
     'Assert:
-    Assert.AreEqual Expected, iShape.Zy
+    Assert.AreEqual Expected, interfaceShape.Zy
 
 TestExit:
     Exit Sub

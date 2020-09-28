@@ -11,7 +11,7 @@ Attribute VB_Exposed = False
 Option Explicit
 Implements IRolledShapeGetter
 
-Private Function IRolledShapeGetter_GetRolledShape(shapeName As String) As Object
+Private Function IRolledShapeGetter_GetRolledShape(ByVal shapeName As String) As Object
 
     #If LateBind Then
         Dim properties As Object

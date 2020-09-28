@@ -12,6 +12,6 @@ Attribute VB_Exposed = False
 Option Explicit
 
 '@Description "Get rolled shape data from persistant storage"
-Public Function GetRolledShape(ByRef shapeName As String) As Object
+Public Function GetRolledShape(ByVal shapeName As String) As Object
 Attribute GetRolledShape.VB_Description = "Get rolled shape data from persistant storage"
 End Function
