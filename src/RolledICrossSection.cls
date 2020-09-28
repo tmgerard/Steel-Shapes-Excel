@@ -89,7 +89,7 @@ Private Property Get Sy() As Double
     Sy = properties(ShapePropertyNames.YAxisSectionModulus)
 End Property
 
-Private Property Get WebThickness() As String
+Private Property Get WebThickness() As Double
     WebThickness = properties(ShapePropertyNames.WebThickness)
 End Property
 
@@ -166,7 +166,7 @@ Private Property Get IRolledICrossSection_Sy() As Double
     IRolledICrossSection_Sy = Sy
 End Property
 
-Private Property Get IRolledICrossSection_WebThickness() As String
+Private Property Get IRolledICrossSection_WebThickness() As Double
     IRolledICrossSection_WebThickness = WebThickness
 End Property
 

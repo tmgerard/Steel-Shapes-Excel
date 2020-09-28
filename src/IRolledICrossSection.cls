@@ -93,7 +93,7 @@ Attribute ShapeType.VB_Description = "Type of rolled I-shape (W, M, S, or HP)"
 End Property
 
 '@Description "Thickness of rolled I-shape web"
-Public Property Get WebThickness() As String
+Public Property Get WebThickness() As Double
 Attribute WebThickness.VB_Description = "Thickness of rolled I-shape web"
 End Property
 
