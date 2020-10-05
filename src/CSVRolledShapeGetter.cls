@@ -25,7 +25,7 @@ Private Const Delimiter As String = ","
 
 Private Sub Class_Initialize()
     With This
-        .filePath = ThisWorkbook.Path & "\" & FileNames.DataFolder & "\" & FileNames.CSVFileName
+        .filePath = ThisWorkbook.Path & "\" & FileNames.DataFolder & "\" & FileNames.AiscCSVFileName
     End With
 End Sub
 
