@@ -79,7 +79,7 @@ Private Sub GetKeys()
     This.keys = Split(This.text, Delimiter)
 End Sub
 
-Private Sub PopulateDictionary(ByRef dict As Scripting.Dictionary)
+Private Sub PopulateDictionary(ByRef dict As Object)
     Dim index As Long
     For index = 0 To UBound(This.keys)
         If dict.count > 0 And dict.Exists(This.keys(index)) Then

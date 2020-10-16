@@ -19,6 +19,6 @@ Public Enum MaterialArrayIndex
 End Enum
 
 '@Description "Return material values obtained from permanent storage."
-Public Function GetMaterial(ByVal specification As String, ByVal grade As String) As Variant()
+Public Function GetMaterial(ByVal specification As String, ByVal grade As String) As String()
 Attribute GetMaterial.VB_Description = "Return material values obtained from permanent storage."
 End Function

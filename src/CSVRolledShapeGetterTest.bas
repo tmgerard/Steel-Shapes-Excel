@@ -18,7 +18,7 @@ Private Sub Test()
     
     Dim key As Variant
     For Each key In dict
-        Debug.Print key, dict.Item(key)
+        Debug.Print key, dict.item(key)
     Next
 
 End Sub

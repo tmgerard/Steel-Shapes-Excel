@@ -23,7 +23,7 @@ Private This As TTensileMaterial
 Public Sub Create(ByVal materialGetter As ITensileMaterialGetter, ByVal specification As String, _
     ByVal grade As String)
     
-    Dim properties() As Variant
+    Dim properties() As String
     properties = materialGetter.GetMaterial(specification, grade)
     
     With This

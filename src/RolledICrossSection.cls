@@ -24,82 +24,82 @@ Public Sub Create(ByVal shapeGetter As IRolledShapeGetter, ByRef shapeName As St
 End Sub
 
 Private Property Get Area() As Double
-    Area = properties.Item(ShapePropertyNames.Area)
+    Area = properties.item(ShapePropertyNames.Area)
 End Property
 
 Private Property Get Cw() As Double
-    Cw = properties.Item(ShapePropertyNames.WarpingConstant)
+    Cw = properties.item(ShapePropertyNames.WarpingConstant)
 End Property
 
 Private Property Get Depth() As Double
-    Depth = properties.Item(ShapePropertyNames.OverallDepth)
+    Depth = properties.item(ShapePropertyNames.OverallDepth)
 End Property
 
 Private Property Get FlangeThickness() As Double
-    FlangeThickness = properties.Item(ShapePropertyNames.FlangeThickness)
+    FlangeThickness = properties.item(ShapePropertyNames.FlangeThickness)
 End Property
 
 Private Property Get FlangeWidth() As Double
-    FlangeWidth = properties.Item(ShapePropertyNames.FlangeWidth)
+    FlangeWidth = properties.item(ShapePropertyNames.FlangeWidth)
 End Property
 
 Private Function GetProperty(ByRef propertyName As String) As Variant
     If Not properties.Exists(propertyName) Then
         ' TODO: throw error to alert that a requested property does not exist for rolled shape
     End If
-    GetProperty = properties.Item(propertyName)
+    GetProperty = properties.item(propertyName)
 End Function
 
 Private Property Get Ix() As Double
-    Ix = properties.Item(ShapePropertyNames.XAxisMomentOfInertia)
+    Ix = properties.item(ShapePropertyNames.XAxisMomentOfInertia)
 End Property
 
 Private Property Get Iy() As Double
-    Iy = properties.Item(ShapePropertyNames.YAxisMomentOfInertia)
+    Iy = properties.item(ShapePropertyNames.YAxisMomentOfInertia)
 End Property
 
 Private Property Get J() As Double
-    J = properties.Item(ShapePropertyNames.TorsionalMomentOfInertia)
+    J = properties.item(ShapePropertyNames.TorsionalMomentOfInertia)
 End Property
 
 Private Property Get Name() As String
-    Name = properties.Item(ShapePropertyNames.AiscManualLabel)
+    Name = properties.item(ShapePropertyNames.AiscManualLabel)
 End Property
 
 Private Property Get NominalWeight() As Double
-    NominalWeight = properties.Item(ShapePropertyNames.NominalWeight)
+    NominalWeight = properties.item(ShapePropertyNames.NominalWeight)
 End Property
 
 Private Property Get rx() As Double
-    rx = properties.Item(ShapePropertyNames.XRadiusOfGyration)
+    rx = properties.item(ShapePropertyNames.XRadiusOfGyration)
 End Property
 
 Private Property Get ry() As Double
-    ry = properties.Item(ShapePropertyNames.YRadiusOfGyration)
+    ry = properties.item(ShapePropertyNames.YRadiusOfGyration)
 End Property
 
 Private Property Get ShapeType() As String
-    ShapeType = properties.Item(ShapePropertyNames.ShapeType)
+    ShapeType = properties.item(ShapePropertyNames.ShapeType)
 End Property
 
 Private Property Get Sx() As Double
-    Sx = properties.Item(ShapePropertyNames.XAxisSectionModulus)
+    Sx = properties.item(ShapePropertyNames.XAxisSectionModulus)
 End Property
 
 Private Property Get Sy() As Double
-    Sy = properties.Item(ShapePropertyNames.YAxisSectionModulus)
+    Sy = properties.item(ShapePropertyNames.YAxisSectionModulus)
 End Property
 
 Private Property Get WebThickness() As Double
-    WebThickness = properties.Item(ShapePropertyNames.WebThickness)
+    WebThickness = properties.item(ShapePropertyNames.WebThickness)
 End Property
 
 Private Property Get Zx() As Double
-    Zx = properties.Item(ShapePropertyNames.XAxisPlasticSectionModulus)
+    Zx = properties.item(ShapePropertyNames.XAxisPlasticSectionModulus)
 End Property
 
 Private Property Get Zy() As Double
-    Zy = properties.Item(ShapePropertyNames.YAxisPlasticSectionModulus)
+    Zy = properties.item(ShapePropertyNames.YAxisPlasticSectionModulus)
 End Property
 
 ' IRolledCrossSection Implementation
