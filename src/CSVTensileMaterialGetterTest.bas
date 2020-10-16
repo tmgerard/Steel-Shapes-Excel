@@ -4,6 +4,8 @@ Option Explicit
 
 Private Sub Test()
 
+    On Error GoTo ErrorHandler
+
     Dim getter As ITensileMaterialGetter
     Set getter = New CSVTensileMaterialGetter
     
@@ -15,5 +17,9 @@ Private Sub Test()
     For Each item In matArray
         Debug.Print item
     Next
+    
+    Exit Sub
+ErrorHandler:
+    MsgBox Err.Number & ": " & Err.Description
 
 End Sub

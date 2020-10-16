@@ -22,6 +22,9 @@ End Type
 Private This As TCSVTensileMaterialGetter
 
 Private Const Delimiter As String = ","
+Private Const ModuleName As String = "CSVTensileMaterialGetter"
+Private Const DataNotFoundErrorMessage As String = _
+    "The requested data was not found within the CSV file."
 
 Public Enum MatArrayIndex
     matSpecification
@@ -49,7 +52,7 @@ Public Function GetMaterial(ByVal specification As String, ByVal grade As String
     Close #This.fileNumber
     
     If Not This.materialFound Then
-        ' TODO: throw error
+        DataErrors.ThrowDataNotFoundError DataNotFoundErrorMessage, ModuleName
     End If
     
     GetMaterial = This.materialProperties
@@ -58,8 +61,8 @@ Public Function GetMaterial(ByVal specification As String, ByVal grade As String
     
 ErrorHandler:
     Close #This.fileNumber
-    MsgBox Err.Description
-    ' TODO: Throw CSVTensileShapeGetterError
+    ' Re-throw error so it is caught by the function caller
+    Err.Raise Err.Number, Err.Source, Err.Description
 End Function
 
 Private Sub PopulateMaterialArray(ByRef specification As String, ByRef grade As String)
