@@ -5,6 +5,8 @@ Option Private Module
 
 Private Sub Test()
 
+    On Error GoTo ErrorHandler
+
     Dim getter As IRolledShapeGetter
     Set getter = New CSVRolledShapeGetter
     
@@ -20,5 +22,9 @@ Private Sub Test()
     For Each key In dict
         Debug.Print key, dict.item(key)
     Next
+    
+    Exit Sub
+ErrorHandler:
+    MsgBox Err.Number & ": " & Err.Description
 
 End Sub

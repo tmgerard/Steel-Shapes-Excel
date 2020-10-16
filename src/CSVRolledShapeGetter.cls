@@ -17,11 +17,15 @@ Private Type TCSVRolledShapeGetter
     keys() As String
     properties() As String
     text As String
+    shapeFound As Boolean
 End Type
 
 Private This As TCSVRolledShapeGetter
 
 Private Const Delimiter As String = ","
+Private Const ModuleName As String = "CSVRolledShapeGetter"
+Private Const DataNotFoundErrorMessage As String = _
+    "The requested data was not found within the CSV file."
 
 Private Sub Class_Initialize()
     With This
@@ -32,6 +36,8 @@ End Sub
 Public Function GetRolledShape(ByVal shapeName As String) As Object
     On Error GoTo ErrorHandler
     
+    This.shapeFound = False
+    
     Const NameIndex As Long = 1
     
     This.fileNumber = FreeFile
@@ -40,6 +46,10 @@ Public Function GetRolledShape(ByVal shapeName As String) As Object
     GetKeys
     
     GetProperties NameIndex, shapeName
+    
+    If Not This.shapeFound Then
+        DataErrors.ThrowDataNotFoundError DataNotFoundErrorMessage, ModuleName
+    End If
     
     #If Not LateBind Then
         Dim dict As Scripting.Dictionary
@@ -60,8 +70,8 @@ Public Function GetRolledShape(ByVal shapeName As String) As Object
 ErrorHandler:
     ' close file and throw error that can be caught by the main subroutine
     Close #This.fileNumber
-    MsgBox Err.Description
-    ' TODO: Throw CSVRolledShapeGetter error
+    ' Re-throw error so it is caught by the function caller
+    Err.Raise Err.Number, Err.Source, Err.Description
 End Function
 
 Private Sub GetProperties(ByRef NameIndex As Long, ByRef shapeName As String)
@@ -69,6 +79,7 @@ Private Sub GetProperties(ByRef NameIndex As Long, ByRef shapeName As String)
         Line Input #This.fileNumber, This.text
         This.properties = Split(This.text, Delimiter)
         If StrComp(shapeName, This.properties(NameIndex), vbTextCompare) = 0 Then
+            This.shapeFound = True
             Exit Do
         End If
     Loop

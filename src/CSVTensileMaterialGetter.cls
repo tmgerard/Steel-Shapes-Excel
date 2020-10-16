@@ -26,13 +26,6 @@ Private Const ModuleName As String = "CSVTensileMaterialGetter"
 Private Const DataNotFoundErrorMessage As String = _
     "The requested data was not found within the CSV file."
 
-Public Enum MatArrayIndex
-    matSpecification
-    matGrade
-    matFy
-    matFu
-End Enum
-
 Private Sub Class_Initialize()
     With This
         .filePath = ThisWorkbook.Path & "\" & FileNames.DataFolder & "\" & FileNames.MaterialCSVFileName
@@ -69,8 +62,8 @@ Private Sub PopulateMaterialArray(ByRef specification As String, ByRef grade As 
     Do While Not EOF(This.fileNumber)
         Line Input #This.fileNumber, This.text
         This.materialProperties = Split(This.text, Delimiter)
-        If This.materialProperties(matSpecification) = specification And _
-            This.materialProperties(matGrade) = grade Then
+        If This.materialProperties(MaterialArrayIndex.specification) = specification And _
+            This.materialProperties(MaterialArrayIndex.grade) = grade Then
             This.materialFound = True
             Exit Do
         End If
