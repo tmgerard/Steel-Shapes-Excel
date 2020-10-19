@@ -9,6 +9,7 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 '@Folder("Tests.Data.Stubs")
 Option Explicit
+
 Implements IRolledShapeGetter
 
 Private Function IRolledShapeGetter_GetRolledShape(ByVal shapeName As String) As Object

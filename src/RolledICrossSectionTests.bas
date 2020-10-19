@@ -169,7 +169,7 @@ End Sub
 
 '@TestMethod("Expected Error")
 Private Sub TestGetPropertyKeyDoesNotExist()
-    Const ExpectedError As Long = 0              'TODO Change to expected error number
+    Const ExpectedError As Long = DataError.PropertyNotFound
     On Error GoTo TestFail
     
     'Arrange:

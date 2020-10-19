@@ -13,6 +13,8 @@ Option Explicit
 Implements IRolledICrossSection
 
 Private properties As Object
+Private Const PropertyNotFoundErrorMessage As String = "The requested property does not exists."
+Private Const ModuleName As String = "RolledICrossSection"
 
 Public Sub Create(ByVal shapeGetter As IRolledShapeGetter, ByRef shapeName As String)
     Dim shapeProperties As Object
@@ -45,7 +47,7 @@ End Property
 
 Private Function GetProperty(ByRef propertyName As String) As Variant
     If Not properties.Exists(propertyName) Then
-        ' TODO: throw error to alert that a requested property does not exist for rolled shape
+        DataErrors.ThrowPropertyNotFoundError PropertyNotFoundErrorMessage, ModuleName
     End If
     GetProperty = properties.item(propertyName)
 End Function
