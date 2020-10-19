@@ -21,15 +21,15 @@ Private This As TRolledIMemberSectionFactory
 
 Private Sub Class_Initialize()
     With This
-        .shapeGetter = New CSVRolledShapeGetter
-        .materialGetter = New CSVTensileMaterialGetter
+        Set .shapeGetter = New CSVRolledShapeGetter
+        Set .materialGetter = New CSVTensileMaterialGetter
     End With
 End Sub
 
 Private Sub Class_Terminate()
     With This
-        .shapeGetter = Nothing
-        .materialGetter = Nothing
+        Set .shapeGetter = Nothing
+        Set .materialGetter = Nothing
     End With
 End Sub
 
@@ -40,8 +40,8 @@ Public Function Create(ByRef shapeName As String, _
     Dim newMember As RolledIMemberSection
     Set newMember = New RolledIMemberSection
     With newMember
-        .Material = TensileMaterialFactory.Create(This.materialGetter, materialSpecification, materialGrade)
-        .Section = RolledICrossSectionFactory.Create(This.shapeGetter, shapeName)
+        Set .Material = TensileMaterialFactory.Create(This.materialGetter, materialSpecification, materialGrade)
+        Set .Section = RolledICrossSectionFactory.Create(This.shapeGetter, shapeName)
     End With
     
     Set Create = newMember
