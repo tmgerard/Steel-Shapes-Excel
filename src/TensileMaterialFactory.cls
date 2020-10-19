@@ -7,7 +7,6 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Attribute VB_Ext_KEY = "Rubberduck" ,"Predeclared Class Module"
 '@Folder("SteelShapes.Material")
 Option Explicit
 '@PredeclaredId
@@ -15,8 +14,8 @@ Option Explicit
 Public Function Create(ByVal materialGetter As ITensileMaterialGetter, ByVal materialSpecification As String, _
     ByVal materialGrade As String) As ITensileMaterial
 
-    Dim material As TensileMaterial
-    Set material = New TensileMaterial
-    material.Create materialGetter, materialSpecification, materialGrade
-    Set Create = material
+    Dim Material As TensileMaterial
+    Set Material = New TensileMaterial
+    Material.Create materialGetter, materialSpecification, materialGrade
+    Set Create = Material
 End Function
