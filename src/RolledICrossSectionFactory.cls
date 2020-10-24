@@ -7,6 +7,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Attribute VB_Ext_KEY = "Rubberduck" ,"Predeclared Class Module"
 '@ModuleAttribute VB_Ext_KEY, "Rubberduck", "Predeclared Class Module"
 '@Folder("SteelShapes.Shapes")
 
@@ -14,7 +15,7 @@ Option Explicit
 '@PredeclaredId
 
 '@Description "Create RolledICrossSection object using data from the specified source file."
-Public Function Create(ByVal shapeGetter As IRolledShapeGetter, ByRef shapeName As String) As IRolledICrossSection
+Public Function Create(ByVal shapeGetter As IRolledShapeGetter, ByVal shapeName As String) As IRolledICrossSection
 Attribute Create.VB_Description = "Create RolledICrossSection object using data from the specified source file."
     Dim newShape As RolledICrossSection
     Set newShape = New RolledICrossSection

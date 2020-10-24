@@ -13,7 +13,7 @@ Implements IRolledShapeGetter
 
 Private Type TCSVRolledShapeGetter
     filePath As String
-    fileNumber As Integer
+    fileNumber As Long
     keys() As String
     properties() As String
     text As String
@@ -90,7 +90,7 @@ Private Sub GetKeys()
     This.keys = Split(This.text, Delimiter)
 End Sub
 
-Private Sub PopulateDictionary(ByRef dict As Object)
+Private Sub PopulateDictionary(ByVal dict As Object)
     Dim index As Long
     For index = 0 To UBound(This.keys)
         If dict.count > 0 And dict.Exists(This.keys(index)) Then
@@ -103,9 +103,9 @@ Private Sub PopulateDictionary(ByRef dict As Object)
         ' properties that do not exist for a given section.
         Const AsciiLowerZCode As Long = 122
         
-        If IsNumeric(Trim(This.properties(index))) Then
+        If IsNumeric(Trim$(This.properties(index))) Then
             dict.Add This.keys(index), CDbl(This.properties(index))
-        ElseIf Not AscW(Trim(This.properties(index))) > AsciiLowerZCode Then
+        ElseIf Not AscW(Trim$(This.properties(index))) > AsciiLowerZCode Then
             dict.Add This.keys(index), This.properties(index)
         End If
     Next index
@@ -116,3 +116,5 @@ End Sub
 Private Function IRolledShapeGetter_GetRolledShape(ByVal shapeName As String) As Object
     Set IRolledShapeGetter_GetRolledShape = Me.GetRolledShape(shapeName)
 End Function
+
+

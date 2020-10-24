@@ -32,7 +32,7 @@ Private Sub Class_Initialize()
     End With
 End Sub
 
-Public Function GetMaterial(ByVal specification As String, ByVal grade As String) As String()
+Public Function GetMaterial(ByVal specificationName As String, ByVal materialGrade As String) As String()
     On Error GoTo ErrorHandler
     
     This.materialFound = False
@@ -40,7 +40,7 @@ Public Function GetMaterial(ByVal specification As String, ByVal grade As String
     This.fileNumber = FreeFile
     Open This.filePath For Input As This.fileNumber
     
-    PopulateMaterialArray specification, grade
+    PopulateMaterialArray specificationName, materialGrade
     
     Close #This.fileNumber
     
@@ -58,7 +58,7 @@ ErrorHandler:
     Err.Raise Err.Number, Err.Source, Err.Description
 End Function
 
-Private Sub PopulateMaterialArray(ByRef specification As String, ByRef grade As String)
+Private Sub PopulateMaterialArray(ByVal specification As String, ByVal grade As String)
     Do While Not EOF(This.fileNumber)
         Line Input #This.fileNumber, This.text
         This.materialProperties = Split(This.text, Delimiter)
@@ -71,7 +71,7 @@ Private Sub PopulateMaterialArray(ByRef specification As String, ByRef grade As 
 End Sub
 
 ' ITensileMaterialGetter Implementation
-Private Function ITensileMaterialGetter_GetMaterial(ByVal specification As String, ByVal grade As String) As String()
+Private Function ITensileMaterialGetter_GetMaterial(ByVal specificationName As String, ByVal materialGrade As String) As String()
     ITensileMaterialGetter_GetMaterial = Me.GetMaterial(specification, grade)
 End Function
 

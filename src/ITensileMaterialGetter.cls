@@ -7,6 +7,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
+'@IgnoreModule ParameterNotUsed, UseMeaningfulName
 '@Interface
 '@Folder("SteelShapes.Data")
 Option Explicit
@@ -19,6 +20,6 @@ Public Enum MaterialArrayIndex
 End Enum
 
 '@Description "Return material values obtained from permanent storage."
-Public Function GetMaterial(ByVal specification As String, ByVal grade As String) As String()
+Public Function GetMaterial(ByVal specificationName As String, ByVal materialGrade As String) As String()
 Attribute GetMaterial.VB_Description = "Return material values obtained from permanent storage."
 End Function

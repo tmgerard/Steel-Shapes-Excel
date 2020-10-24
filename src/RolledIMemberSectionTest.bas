@@ -1,4 +1,5 @@
 Attribute VB_Name = "RolledIMemberSectionTest"
+'@IgnoreModule ProcedureNotUsed
 '@Folder("Tests.Members")
 Option Explicit
 Option Private Module

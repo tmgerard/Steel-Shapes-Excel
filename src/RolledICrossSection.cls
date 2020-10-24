@@ -16,7 +16,7 @@ Private properties As Object
 Private Const PropertyNotFoundErrorMessage As String = "The requested property does not exists."
 Private Const ModuleName As String = "RolledICrossSection"
 
-Public Sub Create(ByVal shapeGetter As IRolledShapeGetter, ByRef shapeName As String)
+Public Sub Create(ByVal shapeGetter As IRolledShapeGetter, ByVal shapeName As String)
     Dim shapeProperties As Object
     Set shapeProperties = shapeGetter.GetRolledShape(shapeName)
     If Not TypeOf shapeProperties Is Dictionary Then

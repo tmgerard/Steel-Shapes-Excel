@@ -1,4 +1,5 @@
 Attribute VB_Name = "TensileMaterialTests"
+'@IgnoreModule LineLabelNotUsed, EmptyMethod
 Option Explicit
 Option Private Module
 

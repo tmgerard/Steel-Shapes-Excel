@@ -28,7 +28,7 @@ Public Property Get Section() As IRolledICrossSection
     Set Section = This.Section
 End Property
 
-Public Property Set Section(ByRef memberSection As IRolledICrossSection)
+Public Property Set Section(ByVal memberSection As IRolledICrossSection)
     Set This.Section = memberSection
 End Property
 
@@ -36,6 +36,6 @@ Public Property Get Material() As ITensileMaterial
     Set Material = This.Material
 End Property
 
-Public Property Set Material(ByRef memberMaterial As ITensileMaterial)
+Public Property Set Material(ByVal memberMaterial As ITensileMaterial)
     Set This.Material = memberMaterial
 End Property

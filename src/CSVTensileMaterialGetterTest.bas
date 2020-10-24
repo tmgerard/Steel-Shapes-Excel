@@ -1,4 +1,5 @@
 Attribute VB_Name = "CSVTensileMaterialGetterTest"
+'@IgnoreModule ProcedureNotUsed
 '@Folder("Tests.Data")
 Option Explicit
 

@@ -32,9 +32,9 @@ Private Sub Class_Terminate()
     End With
 End Sub
 
-Public Function Create(ByRef shapeName As String, _
-    ByRef materialSpecification As String, _
-    ByRef materialGrade As String) As RolledIMemberSection
+Public Function Create(ByVal shapeName As String, _
+    ByVal materialSpecification As String, _
+    ByVal materialGrade As String) As RolledIMemberSection
 
     Dim newMember As RolledIMemberSection
     Set newMember = New RolledIMemberSection
@@ -48,10 +48,12 @@ Public Function Create(ByRef shapeName As String, _
 End Function
 
 ' NOTE: Might switch to using an enum to use the desired getter object
-Public Property Set SetShapeGetter(ByRef shapeGetter As IRolledShapeGetter)
+Public Sub SetShapeGetter(ByVal shapeGetter As IRolledShapeGetter)
     Set This.shapeGetter = shapeGetter
-End Property
+End Sub
 
-Public Property Set SetMaterialGetter(ByRef materialGetter As ITensileMaterialGetter)
+Public Sub SetMaterialGetter(ByVal materialGetter As ITensileMaterialGetter)
     Set This.materialGetter = materialGetter
-End Property
+End Sub
+
+

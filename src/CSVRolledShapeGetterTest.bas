@@ -1,4 +1,5 @@
 Attribute VB_Name = "CSVRolledShapeGetterTest"
+'@IgnoreModule ProcedureNotUsed
 '@Folder("Tests.Data")
 Option Explicit
 Option Private Module
