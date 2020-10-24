@@ -14,7 +14,7 @@ Option Explicit
 '@PredeclaredId
 
 '@Description "Create RolledICrossSection object using data from the specified source file."
-Public Function Create(ByVal shapeGetter As IRolledShapeGetter, ByRef shapeName As String) As RolledICrossSection
+Public Function Create(ByVal shapeGetter As IRolledShapeGetter, ByRef shapeName As String) As IRolledICrossSection
 Attribute Create.VB_Description = "Create RolledICrossSection object using data from the specified source file."
     Dim newShape As RolledICrossSection
     Set newShape = New RolledICrossSection

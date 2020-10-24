@@ -8,6 +8,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 '@Folder("SteelShapes.Shapes")
+'@IgnoreModule UseMeaningfulName
 Option Explicit
 Implements IRolledChannelCrossSection
 
