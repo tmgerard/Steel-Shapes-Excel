@@ -28,7 +28,7 @@ Private Sub ModuleInitialize()
         'Set Fakes = New FakesProvider
     #End If
     
-    Set shapeGetter = New RolledShapeGetterStub
+    Set shapeGetter = New RolledIShapeGetterStub
     
     ' the concrete implementation exposes the create method
     ' a factory will be used to create sections
