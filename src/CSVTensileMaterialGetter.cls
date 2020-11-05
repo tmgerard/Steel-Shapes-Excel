@@ -72,7 +72,7 @@ End Sub
 
 ' ITensileMaterialGetter Implementation
 Private Function ITensileMaterialGetter_GetMaterial(ByVal specificationName As String, ByVal materialGrade As String) As String()
-    ITensileMaterialGetter_GetMaterial = Me.GetMaterial(specification, grade)
+    ITensileMaterialGetter_GetMaterial = Me.GetMaterial(specificationName, materialGrade)
 End Function
 
 
