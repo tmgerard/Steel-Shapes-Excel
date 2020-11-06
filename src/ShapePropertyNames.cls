@@ -45,6 +45,10 @@ Public Property Get OverallDepth() As String
     OverallDepth = "d"
 End Property
 
+Public Property Get LengthShortAngleLeg() As String
+    LengthShortAngleLeg = "d"
+End Property
+
 Public Property Get DetailingDepth() As String
     DetailingDepth = "ddet"
 End Property
@@ -71,6 +75,10 @@ End Property
 
 Public Property Get HssOverallWidth() As String
     HssOverallWidth = "B"
+End Property
+
+Public Property Get LengthLongAngleLeg() As String
+    LengthLongAngleLeg = "b"
 End Property
 
 Public Property Get FlatWallHssWidth() As String
