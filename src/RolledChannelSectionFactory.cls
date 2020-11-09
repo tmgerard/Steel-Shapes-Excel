@@ -12,9 +12,10 @@ Attribute VB_Exposed = False
 Option Explicit
 '@PredeclaredId
 
-'@Description "Create RolledICrossSection object using data from the specified source file."
+
+'@Description "Create RolledChannelCrossSection object using data from the specified source file."
 Public Function Create(ByVal shapeGetter As IRolledShapeGetter, ByVal shapeName As String) As IRolledChannelCrossSection
-Attribute Create.VB_Description = "Create RolledICrossSection object using data from the specified source file."
+Attribute Create.VB_Description = "Create RolledChannelCrossSection object using data from the specified source file."
     Dim newShape As RolledChannelCrossSection
     Set newShape = New RolledChannelCrossSection
     newShape.Create shapeGetter, shapeName
