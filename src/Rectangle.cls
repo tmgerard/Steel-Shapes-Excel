@@ -62,26 +62,38 @@ Attribute Iy.VB_Description = "Returns the moment of inertia about a vertical ax
     Iy = (1 / 12#) * This.Base ^ 3 * This.Height
 End Function
 
+'@Description "Returns the radius of gyration about a horizontal axis that intersects the centroid of the cross-section"
 Public Function rx() As Double
+Attribute rx.VB_Description = "Returns the radius of gyration about a horizontal axis that intersects the centroid of the cross-section"
     rx = Math.Sqr(Me.Ix / Me.Area)
 End Function
 
+'@Description "Returns the radius of gyration about a vertical axis that intersects the centroid of the cross-section"
 Public Function ry() As Double
+Attribute ry.VB_Description = "Returns the radius of gyration about a vertical axis that intersects the centroid of the cross-section"
     ry = Math.Sqr(Me.Iy / Me.Area)
 End Function
 
+'@Description "Returns the elastic section modulus about a horizontal axis that intersects the centroid of the cross-section"
 Public Function Sx() As Double
+Attribute Sx.VB_Description = "Returns the elastic section modulus about a horizontal axis that intersects the centroid of the cross-section"
     Sx = (1 / 6#) * This.Base * This.Height ^ 2
 End Function
 
+'@Description "Returns the elastic section modulus about a vertical axis that intersects the centroid of the cross-section"
 Public Function Sy() As Double
+Attribute Sy.VB_Description = "Returns the elastic section modulus about a vertical axis that intersects the centroid of the cross-section"
     Sy = (1 / 6#) * This.Base ^ 2 * This.Height
 End Function
 
+'@Description "Returns the plastic section modulus about a horizontal axis that intersects the centroid of the cross-section"
 Public Function Zx() As Double
+Attribute Zx.VB_Description = "Returns the plastic section modulus about a horizontal axis that intersects the centroid of the cross-section"
     Zx = (1 / 4#) * This.Base * This.Height ^ 2
 End Function
 
+'@Description "Returns the plastic section modulus about a vertical axis that intersects the centroid of the cross-section"
 Public Function Zy() As Double
+Attribute Zy.VB_Description = "Returns the plastic section modulus about a vertical axis that intersects the centroid of the cross-section"
     Zy = (1 / 4#) * This.Base ^ 2 * This.Height
 End Function
