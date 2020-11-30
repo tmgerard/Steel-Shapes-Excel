@@ -44,15 +44,21 @@ Public Property Let Height(value As Double)
     This.Height = value
 End Property
 
+'@Description "Returns the cross-sectional area"
 Public Function Area() As Double
+Attribute Area.VB_Description = "Returns the cross-sectional area"
     Area = This.Base * This.Height
 End Function
 
+'@Description "Returns the moment of inertia about a horizontal axis that intersects the centroid of the cross-section"
 Public Function Ix() As Double
+Attribute Ix.VB_Description = "Returns the moment of inertia about a horizontal axis that intersects the centroid of the cross-section"
     Ix = (1 / 12#) * This.Base * This.Height ^ 3
 End Function
 
+'@Description "Returns the moment of inertia about a vertical axis that intersects the centroid of the cross-section"
 Public Function Iy() As Double
+Attribute Iy.VB_Description = "Returns the moment of inertia about a vertical axis that intersects the centroid of the cross-section"
     Iy = (1 / 12#) * This.Base ^ 3 * This.Height
 End Function
 
