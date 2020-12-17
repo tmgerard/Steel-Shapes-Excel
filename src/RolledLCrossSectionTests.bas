@@ -32,12 +32,12 @@ Private Sub ModuleInitialize()
     
     ' the concrete implementation exposes the create method
     ' a factory will be used to create sections
-    Dim shape As RolledLCrossSection
-    Set shape = New RolledLCrossSection
-    shape.Create shapeGetter, "L4X3X3/8"
+    Dim Shape As RolledLCrossSection
+    Set Shape = New RolledLCrossSection
+    Shape.Create shapeGetter, "L4X3X3/8"
     
     ' the interface exposes the properties
-    Set interfaceShape = shape
+    Set interfaceShape = Shape
 End Sub
 
 '@ModuleCleanup
