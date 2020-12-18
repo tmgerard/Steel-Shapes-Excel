@@ -27,13 +27,13 @@ End Type
 Private This As TPlateMemberSection
 
 Private Sub Class_Initialize()
-    Set Shape = New Rectangle
+    Set This.Shape = New Rectangle
     This.Orientation = Horizontal
 End Sub
 
 Private Sub Class_Terminate()
-    Set Shape = Nothing
-    Set Material = Nothing
+    Set This.Shape = Nothing
+    Set This.Material = Nothing
 End Sub
 
 Public Property Get Material() As ITensileMaterial
@@ -57,7 +57,7 @@ Public Property Get Thickness() As Double
 End Property
 
 Public Property Let Thickness(ByVal value As Double)
-    This.Shape.Height = Thickness
+    This.Shape.Height = value
 End Property
 
 Public Property Get Width() As Double
