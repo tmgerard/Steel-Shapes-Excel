@@ -1,0 +1,146 @@
+VERSION 1.0 CLASS
+BEGIN
+  MultiUse = -1  'True
+END
+Attribute VB_Name = "BuiltUpIGirderSection"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = False
+'@Folder("SteelShapes.Members")
+Option Explicit
+
+Private Type TBuiltUpIGirderSection
+    TopFlange As IBuiltUpIGirderComponent
+    WebPlate As IBuiltUpIGirderComponent
+    BottomFlange As IBuiltUpIGirderComponent
+End Type
+
+Private This As TBuiltUpIGirderSection
+
+Private Sub Class_Terminate()
+    With This
+        .TopFlange = Nothing
+        .WebPlate = Nothing
+        .BottomFlange = Nothing
+    End With
+End Sub
+
+Public Property Get BottomFlange() As IBuiltUpIGirderComponent
+    Set BottomFlange = This.BottomFlange
+End Property
+
+Public Property Set BottomFlange(ByVal flange As IBuiltUpIGirderComponent)
+    If Not flange.Orientation = Horizontal Then
+        ' TODO: throw plate orientation error
+    End If
+    Set This.BottomFlange = flange
+End Property
+
+Public Property Get TopFlange() As IBuiltUpIGirderComponent
+    Set TopFlange = This.TopFlange
+End Property
+
+Public Property Set TopFlange(ByVal flange As IBuiltUpIGirderComponent)
+    If Not flange.Orientation = Horizontal Then
+        ' TODO: throw plate orientation error
+    End If
+    Set This.TopFlange = flange
+End Property
+
+Public Property Get WebPlate() As IBuiltUpIGirderComponent
+    Set WebPlate = This.WebPlate
+End Property
+
+Public Property Set WebPlate(ByVal plate As IBuiltUpIGirderComponent)
+    If Not plate.Orientation = Vertical Then
+        ' TODO: throw palte orientation error
+    End If
+    Set This.WebPlate = plate
+End Property
+
+Public Function Area() As Double
+    With This
+        Area = .BottomFlange.Area + .TopFlange.Area + .WebPlate.Area
+    End With
+End Function
+
+' Equation adapted from "Roark's Formulas for Stress and Strain 8th Edition"
+' Table 10.2 - Formulas for Torsional Properties and Stresses in Thin-Walled Cross Sections
+' Cross Section Reference No. 7
+Public Function Cw() As Double
+    ' TODO: implement warping constant calculation
+End Function
+
+Public Function Depth() As Double
+    With This
+        Depth = .BottomFlange.Thickness + .TopFlange.Thickness + .WebPlate.Width
+    End With
+End Function
+
+Public Function Ix() As Double
+    Ix = BottomFlangeIx + WebPlateIx + TopFlangeIx
+End Function
+
+Public Function Iy() As Double
+    With This
+        Iy = .BottomFlange.Iy + .WebPlate.Iy + .TopFlange.Iy
+    End With
+End Function
+
+' Equation adapted from "Roark's Formulas for Stress and Strain 8th Edition"
+' Table 10.2 - Formulas for Torsional Properties and Stresses in Thin-Walled Cross Sections
+' Cross Section Reference No. 7
+Public Function J() As Double
+    With This
+        J = (1 / 3#) _
+            * (.TopFlange.Thickness ^ 3 * .TopFlange.Width _
+            + .BottomFlange.Thickness ^ 3 * .BottomFlange.Width _
+            + .WebPlate.Width ^ 3 * .WebPlate.Thickness)
+    End With
+End Function
+
+Public Function NominalWeight() As Double
+    With This
+        NominalWeight = .BottomFlange.NominalWeight + .TopFlange.NominalWeight + .WebPlate.NominalWeight
+    End With
+End Function
+
+Public Function ToCentroid() As Double
+    ToCentroid = AreaDistanceSum / Me.Area
+End Function
+
+Private Function AreaDistanceSum() As Double
+    With This
+        Dim result As Double
+        ' bottom flange component
+        result = .BottomFlange.Area * (.BottomFlange.Thickness / 2#)
+        ' web component
+        result = result + .WebPlate.Area * (.BottomFlange.Thickness + .WebPlate.Width / 2#)
+        ' top flange component
+        reuslt = result + .TopFlange.Area * (Me.Depth - .TopFlange.Thickness / 2#)
+    End With
+    
+    AreaDistanceSum = result
+End Function
+
+Private Function BottomFlangeIx() As Double
+    With This.BottomFlange
+    Dim Distance As Double
+    Distance = Me.ToCentroid - 0.5 * .Thickness
+    BottomFlangeIx = ParallelAxisTheorem(.Ix, .Area, Distance)
+End Function
+
+Private Function WebPlateIx() As Double
+    With This.WebPlate
+    Dim Distance As Double
+    Distance = Math.Abs(Me.ToCentroid - (This.BottomFlange.Thickness + 0.5 * .Width))
+    BottomFlangeIx = ParallelAxisTheorem(.Ix, .Area, Distance)
+End Function
+
+Private Function TopFlangeIx() As Double
+    With This.TopFlange
+    Dim Distance As Double
+    Distance = (Me.Depth - 0.5 * .Thickness) - Me.ToCentroid
+    BottomFlangeIx = ParallelAxisTheorem(.Ix, .Area, Distance)
+End Function

@@ -167,6 +167,10 @@ Private Function IBuiltUpIGirderComponent_NominalWeight() As Double
     IBuiltUpIGirderComponent_NominalWeight = Me.NominalWeight
 End Function
 
+Private Property Get IBuiltUpIGirderComponent_Orientation() As PlateOrientation
+    IBuiltUpIGirderComponent_Orientation = Me.Orientation
+End Property
+
 Private Function IBuiltUpIGirderComponent_rx() As Double
     IBuiltUpIGirderComponent_rx = Me.rx
 End Function

@@ -17,6 +17,9 @@ End Property
 Public Property Set Material(ByVal memberMaterial As ITensileMaterial)
 End Property
 
+Public Property Get Orientation() As PlateOrientation
+End Property
+
 Public Property Get Thickness() As Double
 End Property
 
