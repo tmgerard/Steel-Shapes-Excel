@@ -88,6 +88,10 @@ Public Function Iy() As Double
     End If
 End Function
 
+Public Function NominalWeight() As Double
+    NominalWeight = Material.Density * Me.Area
+End Function
+
 Public Function rx() As Double
     If This.Orientation = Horizontal Then
         rx = This.Shape.rx

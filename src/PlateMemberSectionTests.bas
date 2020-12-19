@@ -355,3 +355,22 @@ TestExit:
 TestFail:
     Assert.Fail "Test raised an error: #" & Err.Number & " - " & Err.Description
 End Sub
+
+'@TestMethod("Calculation")
+Private Sub TestCalculateNominalWeight()
+    On Error GoTo TestFail
+    
+    'Arrange:
+    Const Expected As Double = 3.4028
+
+    'Act:
+    plate.Orientation = Vertical
+
+    'Assert:
+    Assert.IsTrue CompareDoubleRound(Expected, plate.NominalWeight, doubleComparePrecision)
+
+TestExit:
+    Exit Sub
+TestFail:
+    Assert.Fail "Test raised an error: #" & Err.Number & " - " & Err.Description
+End Sub
