@@ -104,3 +104,21 @@ TestExit:
 TestFail:
     Assert.Fail "Test raised an error: #" & Err.Number & " - " & Err.Description
 End Sub
+
+'@TestMethod("Property")
+Private Sub TestGetDensity()
+    On Error GoTo TestFail
+    
+    'Arrange:
+    Const Expected As Double = 0.28356481
+
+    'Act:
+
+    'Assert:
+    Assert.AreEqual Expected, Material.Density
+
+TestExit:
+    Exit Sub
+TestFail:
+    Assert.Fail "Test raised an error: #" & Err.Number & " - " & Err.Description
+End Sub

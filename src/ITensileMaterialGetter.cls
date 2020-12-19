@@ -17,6 +17,7 @@ Public Enum MaterialArrayIndex
     grade
     Fy
     Fu
+    Density
 End Enum
 
 '@Description "Return material values obtained from permanent storage."

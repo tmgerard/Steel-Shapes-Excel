@@ -16,6 +16,7 @@ Private Type TTensileMaterial
     specification As String
     UltimateStrength As Double
     YieldStrength As Double
+    Density As Double
 End Type
 
 Private This As TTensileMaterial
@@ -31,11 +32,16 @@ Public Sub Create(ByVal materialGetter As ITensileMaterialGetter, ByVal specific
         .grade = properties(MaterialArrayIndex.grade)
         .UltimateStrength = CDbl(properties(MaterialArrayIndex.Fu))
         .YieldStrength = CDbl(properties(MaterialArrayIndex.Fy))
+        .Density = CDbl(properties(MaterialArrayIndex.Density))
     End With
     
 End Sub
 
 ' ITensileMaterial Implementation
+
+Private Property Get ITensileMaterial_Density() As Double
+    ITensileMaterial_Density = This.Density
+End Property
 
 Private Property Get ITensileMaterial_Name() As String
     ITensileMaterial_Name = This.specification & " " & This.grade

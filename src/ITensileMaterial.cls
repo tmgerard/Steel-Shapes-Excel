@@ -25,3 +25,8 @@ End Property
 Public Property Get YieldStrength() As Double
 Attribute YieldStrength.VB_Description = "Tensile strength at first yield"
 End Property
+
+'@Description "Density of the material"
+Public Property Get Density() As Double
+Attribute Density.VB_Description = "Density of the material"
+End Property
