@@ -9,6 +9,7 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 '@Folder("SteelShapes.Members")
 Option Explicit
+Implements IBuiltUpIGirderComponent
 
 ' Plate orientation used as a flag to output
 ' the correct plate properties for the plates
@@ -138,4 +139,70 @@ Public Function Zy() As Double
     Else
         Zy = This.Shape.Zx
     End If
+End Function
+
+' IBuiltUpIGirderComponent Implementation
+
+Private Function IBuiltUpIGirderComponent_Area() As Double
+    IBuiltUpIGirderComponent_Area = Me.Area
+End Function
+
+Private Function IBuiltUpIGirderComponent_Ix() As Double
+    IBuiltUpIGirderComponent_Ix = Me.Ix
+End Function
+
+Private Function IBuiltUpIGirderComponent_Iy() As Double
+    IBuiltUpIGirderComponent_Iy = Me.Iy
+End Function
+
+Private Property Set IBuiltUpIGirderComponent_Material(ByVal memberMaterial As ITensileMaterial)
+    Set Me.Material = memberMaterial
+End Property
+
+Private Property Get IBuiltUpIGirderComponent_Material() As ITensileMaterial
+    Set IBuiltUpIGirderComponent_Material = Me.Material
+End Property
+
+Private Function IBuiltUpIGirderComponent_NominalWeight() As Double
+    IBuiltUpIGirderComponent_NominalWeight = Me.NominalWeight
+End Function
+
+Private Function IBuiltUpIGirderComponent_rx() As Double
+    IBuiltUpIGirderComponent_rx = Me.rx
+End Function
+
+Private Function IBuiltUpIGirderComponent_ry() As Double
+    IBuiltUpIGirderComponent_ry = Me.ry
+End Function
+
+Private Function IBuiltUpIGirderComponent_Sx() As Double
+    IBuiltUpIGirderComponent_Sx = Me.Sx
+End Function
+
+Private Function IBuiltUpIGirderComponent_Sy() As Double
+    IBuiltUpIGirderComponent_Sy = Me.Sy
+End Function
+
+Private Property Let IBuiltUpIGirderComponent_Thickness(ByVal value As Double)
+    Me.Thickness = value
+End Property
+
+Private Property Get IBuiltUpIGirderComponent_Thickness() As Double
+    IBuiltUpIGirderComponent_Thickness = Me.Thickness
+End Property
+
+Private Property Let IBuiltUpIGirderComponent_Width(ByVal value As Double)
+    Me.Width = value
+End Property
+
+Private Property Get IBuiltUpIGirderComponent_Width() As Double
+    IBuiltUpIGirderComponent_Width = Me.Width
+End Property
+
+Private Function IBuiltUpIGirderComponent_Zx() As Double
+    IBuiltUpIGirderComponent_Zx = Me.Zx
+End Function
+
+Private Function IBuiltUpIGirderComponent_Zy() As Double
+    IBuiltUpIGirderComponent_Zy = Me.Zy
 End Function
