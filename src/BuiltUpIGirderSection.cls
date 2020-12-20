@@ -118,7 +118,7 @@ Private Function AreaDistanceSum() As Double
         ' web component
         result = result + .WebPlate.Area * (.BottomFlange.Thickness + .WebPlate.Width / 2#)
         ' top flange component
-        reuslt = result + .TopFlange.Area * (Me.Depth - .TopFlange.Thickness / 2#)
+        result = result + .TopFlange.Area * (Me.Depth - .TopFlange.Thickness / 2#)
     End With
     
     AreaDistanceSum = result
@@ -126,21 +126,24 @@ End Function
 
 Private Function BottomFlangeIx() As Double
     With This.BottomFlange
-    Dim Distance As Double
-    Distance = Me.ToCentroid - 0.5 * .Thickness
-    BottomFlangeIx = ParallelAxisTheorem(.Ix, .Area, Distance)
+        Dim Distance As Double
+        Distance = Me.ToCentroid - 0.5 * .Thickness
+        BottomFlangeIx = ParallelAxisTheorem(.Ix, .Area, Distance)
+    End With
 End Function
 
 Private Function WebPlateIx() As Double
     With This.WebPlate
-    Dim Distance As Double
-    Distance = Math.Abs(Me.ToCentroid - (This.BottomFlange.Thickness + 0.5 * .Width))
-    BottomFlangeIx = ParallelAxisTheorem(.Ix, .Area, Distance)
+        Dim Distance As Double
+        Distance = Math.Abs(Me.ToCentroid - (This.BottomFlange.Thickness + 0.5 * .Width))
+        WebPlateIx = ParallelAxisTheorem(.Ix, .Area, Distance)
+    End With
 End Function
 
 Private Function TopFlangeIx() As Double
     With This.TopFlange
-    Dim Distance As Double
-    Distance = (Me.Depth - 0.5 * .Thickness) - Me.ToCentroid
-    BottomFlangeIx = ParallelAxisTheorem(.Ix, .Area, Distance)
+        Dim Distance As Double
+        Distance = (Me.Depth - 0.5 * .Thickness) - Me.ToCentroid
+        TopFlangeIx = ParallelAxisTheorem(.Ix, .Area, Distance)
+    End With
 End Function
