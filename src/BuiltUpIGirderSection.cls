@@ -69,12 +69,29 @@ End Function
 ' Table 10.2 - Formulas for Torsional Properties and Stresses in Thin-Walled Cross Sections
 ' Cross Section Reference No. 7
 Public Function Cw() As Double
-    ' TODO: implement warping constant calculation
+    With This
+        Dim numerator As Double
+        numerator = Me.FlangeCentroidToCentroid ^ 2 _
+            * .TopFlange.Thickness * .BottomFlange.Thickness _
+            * .TopFlange.Width ^ 3 * .BottomFlange.Width ^ 3
+            
+        Dim denominator As Double
+        denominator = 12 * (.TopFlange.Thickness * .TopFlange.Width ^ 3 _
+            * .BottomFlange.Thickness * .BottomFlange.Width ^ 3)
+    End With
+    
+    Cw = numerator / denominator
 End Function
 
 Public Function Depth() As Double
     With This
         Depth = .BottomFlange.Thickness + .TopFlange.Thickness + .WebPlate.Width
+    End With
+End Function
+
+Public Function FlangeCentroidToCentroid() As Double
+    With This
+        FlangeCentroidToCentroid = .WebPlate.Width + 0.5 * (.TopFlange.Thickness + .BottomFlange.Thickness)
     End With
 End Function
 
@@ -106,7 +123,9 @@ Public Function NominalWeight() As Double
     End With
 End Function
 
+'@Description "Distance from the bottom of the girder to the centroid of the girder"
 Public Function ToCentroid() As Double
+Attribute ToCentroid.VB_Description = "Distance from the bottom of the girder to the centroid of the girder"
     ToCentroid = AreaDistanceSum / Me.Area
 End Function
 
