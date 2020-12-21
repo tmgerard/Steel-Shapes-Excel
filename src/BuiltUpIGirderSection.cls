@@ -18,6 +18,10 @@ End Type
 
 Private This As TBuiltUpIGirderSection
 
+Private Const BadWebPlateOrientationErrorMessage As String = "Web plate must have a vertical orientation."
+Private Const BadFlangePlateOrientationErrorMessage As String = "Flange plate must have a horizontal orientation."
+Private Const ClassName As String = "BuiltUpIGirderSection"
+
 Private Sub Class_Terminate()
     With This
         .TopFlange = Nothing
@@ -32,7 +36,7 @@ End Property
 
 Public Property Set BottomFlange(ByVal flange As IBuiltUpIGirderComponent)
     If Not flange.Orientation = Horizontal Then
-        ' TODO: throw plate orientation error
+        BuiltUpIGirderErrors.ThrowBadPlateOrientationError BadFlangePlateOrientationErrorMessage, ClassName
     End If
     Set This.BottomFlange = flange
 End Property
@@ -43,7 +47,7 @@ End Property
 
 Public Property Set TopFlange(ByVal flange As IBuiltUpIGirderComponent)
     If Not flange.Orientation = Horizontal Then
-        ' TODO: throw plate orientation error
+        BuiltUpIGirderErrors.ThrowBadPlateOrientationError BadFlangePlateOrientationErrorMessage, ClassName
     End If
     Set This.TopFlange = flange
 End Property
@@ -54,7 +58,7 @@ End Property
 
 Public Property Set WebPlate(ByVal plate As IBuiltUpIGirderComponent)
     If Not plate.Orientation = Vertical Then
-        ' TODO: throw palte orientation error
+        BuiltUpIGirderErrors.ThrowBadPlateOrientationError BadWebPlateOrientationErrorMessage, ClassName
     End If
     Set This.WebPlate = plate
 End Property
