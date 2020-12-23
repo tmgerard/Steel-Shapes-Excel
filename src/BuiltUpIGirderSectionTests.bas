@@ -49,12 +49,6 @@ Private Sub ModuleInitialize()
         Set Assert = New AssertClass
         'Set Fakes = New FakesProvider
     #End If
-    
-    Set plateGirder = New BuiltUpIGirderSection
-    Set topFlangePlate = New PlateMemberSection
-    Set WebPlate = New PlateMemberSection
-    Set bottomFlangePlate = New PlateMemberSection
-    Set materialGetter = New CSVTensileMaterialGetter
 End Sub
 
 '@ModuleCleanup
@@ -62,15 +56,17 @@ Private Sub ModuleCleanup()
     'this method runs once per module.
     Set Assert = Nothing
     'Set Fakes = Nothing
-    Set plateGirder = Nothing
-    Set topFlangePlate = Nothing
-    Set WebPlate = Nothing
-    Set bottomFlangePlate = Nothing
 End Sub
 
 '@TestInitialize
 Private Sub TestInitialize()
     'This method runs before every test in the module..
+    Set plateGirder = New BuiltUpIGirderSection
+    Set topFlangePlate = New PlateMemberSection
+    Set WebPlate = New PlateMemberSection
+    Set bottomFlangePlate = New PlateMemberSection
+    Set materialGetter = New CSVTensileMaterialGetter
+    
     With topFlangePlate
         .width = topWidth
         .Thickness = topThickness
@@ -102,6 +98,10 @@ End Sub
 '@TestCleanup
 Private Sub TestCleanup()
     'this method runs after every test in the module.
+    Set plateGirder = Nothing
+    Set topFlangePlate = Nothing
+    Set WebPlate = Nothing
+    Set bottomFlangePlate = Nothing
 End Sub
 
 '@TestMethod("Calculation")
@@ -282,4 +282,130 @@ TestExit:
     Exit Sub
 TestFail:
     Assert.Fail "Test raised an error: #" & Err.Number & " - " & Err.Description
+End Sub
+
+'@TestMethod("Calculation")
+Private Sub TestCalculaterx()
+    On Error GoTo TestFail
+    
+    'Arrange:
+    Const Expected As Double = 22.7235
+
+    'Act:
+
+    'Assert:
+    Assert.IsTrue CompareDoubleRound(Expected, plateGirder.rx, doubleComparePrecision)
+
+TestExit:
+    Exit Sub
+TestFail:
+    Assert.Fail "Test raised an error: #" & Err.Number & " - " & Err.Description
+End Sub
+
+'@TestMethod("Calculation")
+Private Sub TestCalculatery()
+    On Error GoTo TestFail
+    
+    'Arrange:
+    Const Expected As Double = 3.676
+
+    'Act:
+
+    'Assert:
+    Assert.IsTrue CompareDoubleRound(Expected, plateGirder.ry, doubleComparePrecision)
+
+TestExit:
+    Exit Sub
+TestFail:
+    Assert.Fail "Test raised an error: #" & Err.Number & " - " & Err.Description
+End Sub
+
+'@TestMethod("Expected Error")
+Private Sub TestTopPlateBadOrientation()
+    Const ExpectedError As Long = BuiltUpIGirderError.BadPlateOrientation
+    On Error GoTo TestFail
+    
+    'Arrange:
+    Dim newPlate As PlateMemberSection
+    Set newPlate = New PlateMemberSection
+    With newPlate
+        .Thickness = topThickness
+        .width = topWidth
+        .Orientation = Vertical ' top plate should always be horizontal
+    End With
+
+    'Act:
+    Set plateGirder.TopFlange = newPlate
+
+Assert:
+    Assert.Fail "Expected error was not raised"
+
+TestExit:
+    Exit Sub
+TestFail:
+    If Err.Number = ExpectedError Then
+        Resume TestExit
+    Else
+        Resume Assert
+    End If
+End Sub
+
+'@TestMethod("Expected Error")
+Private Sub TestWebPlateBadOrientation()
+    Const ExpectedError As Long = BuiltUpIGirderError.BadPlateOrientation
+    On Error GoTo TestFail
+    
+    'Arrange:
+    Dim newPlate As PlateMemberSection
+    Set newPlate = New PlateMemberSection
+    With newPlate
+        .Thickness = webThickness
+        .width = webWidth
+        .Orientation = Horizontal ' web plate should always be vertical
+    End With
+
+    'Act:
+    Set plateGirder.WebPlate = newPlate
+
+Assert:
+    Assert.Fail "Expected error was not raised"
+
+TestExit:
+    Exit Sub
+TestFail:
+    If Err.Number = ExpectedError Then
+        Resume TestExit
+    Else
+        Resume Assert
+    End If
+End Sub
+
+'@TestMethod("Expected Error")
+Private Sub TestBottomPlateBadOrientation()
+    Const ExpectedError As Long = BuiltUpIGirderError.BadPlateOrientation
+    On Error GoTo TestFail
+    
+    'Arrange:
+    Dim newPlate As PlateMemberSection
+    Set newPlate = New PlateMemberSection
+    With newPlate
+        .Thickness = bottomThickness
+        .width = bottomWidth
+        .Orientation = Vertical ' top plate should always be horizontal
+    End With
+
+    'Act:
+    Set plateGirder.BottomFlange = newPlate
+
+Assert:
+    Assert.Fail "Expected error was not raised"
+
+TestExit:
+    Exit Sub
+TestFail:
+    If Err.Number = ExpectedError Then
+        Resume TestExit
+    Else
+        Resume Assert
+    End If
 End Sub

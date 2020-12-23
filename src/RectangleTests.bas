@@ -210,7 +210,7 @@ TestFail:
 End Sub
 
 '@TestMethod("Calculation")
-Private Sub TestCalculateRx()
+Private Sub TestCalculaterx()
     On Error GoTo TestFail
     
     'Arrange:
@@ -228,7 +228,7 @@ TestFail:
 End Sub
 
 '@TestMethod("Calculation")
-Private Sub TestCalculateRy()
+Private Sub TestCalculatery()
     On Error GoTo TestFail
     
     'Arrange:
