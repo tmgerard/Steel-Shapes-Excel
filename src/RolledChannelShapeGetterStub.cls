@@ -38,7 +38,7 @@ Private Function IRolledShapeGetter_GetRolledShape(ByVal shapeName As String) As
         .Add ShapePropertyNames.YRadiusOfGyration, 0.901
         .Add ShapePropertyNames.XAxisSectionModulus, 42#
         .Add ShapePropertyNames.YAxisSectionModulus, 3.09
-        .Add ShapePropertyNames.WebThickness, 0.4
+        .Add ShapePropertyNames.webThickness, 0.4
         .Add ShapePropertyNames.XAxisPlasticSectionModulus, 50.8
         .Add ShapePropertyNames.YAxisPlasticSectionModulus, 6.19
     End With

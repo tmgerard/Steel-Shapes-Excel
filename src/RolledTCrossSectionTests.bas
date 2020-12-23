@@ -382,7 +382,7 @@ Private Sub TestGetWebThickness()
     'Act:
 
     'Assert:
-    Assert.AreEqual Expected, interfaceShape.WebThickness
+    Assert.AreEqual Expected, interfaceShape.webThickness
 
 TestExit:
     Exit Sub

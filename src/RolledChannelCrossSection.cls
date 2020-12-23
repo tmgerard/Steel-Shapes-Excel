@@ -92,8 +92,8 @@ Private Property Get Sy() As Double
     Sy = properties.item(ShapePropertyNames.YAxisSectionModulus)
 End Property
 
-Private Property Get WebThickness() As Double
-    WebThickness = properties.item(ShapePropertyNames.WebThickness)
+Private Property Get webThickness() As Double
+    webThickness = properties.item(ShapePropertyNames.webThickness)
 End Property
 
 Private Property Get Zx() As Double
@@ -170,7 +170,7 @@ Private Property Get IRolledChannelCrossSection_Sy() As Double
 End Property
 
 Private Property Get IRolledChannelCrossSection_WebThickness() As Double
-    IRolledChannelCrossSection_WebThickness = WebThickness
+    IRolledChannelCrossSection_WebThickness = webThickness
 End Property
 
 Private Property Get IRolledChannelCrossSection_Zx() As Double

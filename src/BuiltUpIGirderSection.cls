@@ -24,9 +24,9 @@ Private Const ClassName As String = "BuiltUpIGirderSection"
 
 Private Sub Class_Terminate()
     With This
-        .TopFlange = Nothing
-        .WebPlate = Nothing
-        .BottomFlange = Nothing
+        Set .TopFlange = Nothing
+        Set .WebPlate = Nothing
+        Set .BottomFlange = Nothing
     End With
 End Sub
 
@@ -81,7 +81,7 @@ Public Function Cw() As Double
             
         Dim denominator As Double
         denominator = 12 * (.TopFlange.Thickness * .TopFlange.Width ^ 3 _
-            * .BottomFlange.Thickness * .BottomFlange.Width ^ 3)
+            + .BottomFlange.Thickness * .BottomFlange.Width ^ 3)
     End With
     
     Cw = numerator / denominator

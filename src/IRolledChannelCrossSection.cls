@@ -93,8 +93,8 @@ Attribute ShapeType.VB_Description = "Type of rolled channel (C or MC)"
 End Property
 
 '@Description "Thickness of rolled channel"
-Public Property Get WebThickness() As Double
-Attribute WebThickness.VB_Description = "Thickness of rolled channel"
+Public Property Get webThickness() As Double
+Attribute webThickness.VB_Description = "Thickness of rolled channel"
 End Property
 
 '@Description "Plastic section modulus about the x-axis"

@@ -89,8 +89,8 @@ Public Property Get InsideDiameter() As String
     InsideDiameter = "ID"
 End Property
 
-Public Property Get WebThickness() As String
-    WebThickness = "tw"
+Public Property Get webThickness() As String
+    webThickness = "tw"
 End Property
 
 Public Property Get DetailingWebThickness() As String
