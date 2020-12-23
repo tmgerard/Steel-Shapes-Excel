@@ -127,6 +127,22 @@ Public Function NominalWeight() As Double
     End With
 End Function
 
+Public Function rx() As Double
+    rx = Math.Sqr(Me.Ix / Me.Area)
+End Function
+
+Public Function ry() As Double
+    ry = Math.Sqr(Me.Iy / Area)
+End Function
+
+Public Function Sx() As Double
+    Sx = Me.Ix / WorksheetFunction.Max(Me.ToCentroid, Me.Depth - Me.ToCentroid)
+End Function
+
+Public Function Sy() As Double
+    Sy = Me.Iy / (0.5 * WorksheetFunction.Max(This.TopFlange.Width, This.BottomFlange.Width))
+End Function
+
 '@Description "Distance from the bottom of the girder to the centroid of the girder"
 Public Function ToCentroid() As Double
 Attribute ToCentroid.VB_Description = "Distance from the bottom of the girder to the centroid of the girder"
