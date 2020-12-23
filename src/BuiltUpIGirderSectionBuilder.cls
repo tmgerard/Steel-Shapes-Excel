@@ -12,6 +12,9 @@ Option Explicit
 
 Private Type TBuiltUpIGirderSectionBuilder
     girder As BuiltUpIGirderSection
+    topInitialized As Boolean
+    webInitialized As Boolean
+    bottomInitialized As Boolean
 End Type
 
 Private This As TBuiltUpIGirderSectionBuilder
@@ -19,7 +22,12 @@ Private Const MissingPlateErrorMessage As String = "Plate member section not ini
 Private Const ClassName As String = "BuiltUpIGirderSectionBuilder"
 
 Private Sub Class_Initialize()
-    Set This.girder = New BuiltUpIGirderSection
+    With This
+        Set .girder = New BuiltUpIGirderSection
+        .topInitialized = False
+        .webInitialized = False
+        .bottomInitialized = False
+    End With
 End Sub
 
 Private Sub Class_Terminate()
@@ -39,6 +47,7 @@ Public Sub SetTopFlange(ByVal width As Double, ByVal Thickness As Double, _
     Dim plate As PlateMemberSection
     Set plate = PlateMemberSectionFactory.Create(width, Thickness, materialSpec, materialGrade)
     plate.Orientation = Horizontal
+    This.topInitialized = True
     
     Set This.girder.TopFlange = plate
 End Sub
@@ -49,8 +58,9 @@ Public Sub SetWebPlate(ByVal width As Double, ByVal Thickness As Double, _
     Dim plate As PlateMemberSection
     Set plate = PlateMemberSectionFactory.Create(width, Thickness, materialSpec, materialGrade)
     plate.Orientation = Vertical
+    This.webInitialized = True
     
-    Set This.girder.TopFlange = plate
+    Set This.girder.WebPlate = plate
 End Sub
 
 Public Sub SetBottomFlange(ByVal width As Double, ByVal Thickness As Double, _
@@ -59,13 +69,12 @@ Public Sub SetBottomFlange(ByVal width As Double, ByVal Thickness As Double, _
     Dim plate As PlateMemberSection
     Set plate = PlateMemberSectionFactory.Create(width, Thickness, materialSpec, materialGrade)
     plate.Orientation = Horizontal
+    This.bottomInitialized = True
     
-    Set This.girder.TopFlange = plate
+    Set This.girder.BottomFlange = plate
 End Sub
 
 Private Function AllGirderElementsCreated() As Boolean
-    AllGirderElementsCreated = Not This.girder.TopFlange Is Nothing Or _
-        Not This.girder.WebPlate Is Nothing Or _
-        Not This.girder.BottomFlange Is Nothing
+    AllGirderElementsCreated = This.topInitialized And This.webInitialized And This.bottomInitialized
 End Function
 
