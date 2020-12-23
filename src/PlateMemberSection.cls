@@ -61,11 +61,11 @@ Public Property Let Thickness(ByVal value As Double)
     This.Shape.Height = value
 End Property
 
-Public Property Get Width() As Double
-    Width = This.Shape.Base
+Public Property Get width() As Double
+    width = This.Shape.Base
 End Property
 
-Public Property Let Width(ByVal value As Double)
+Public Property Let width(ByVal value As Double)
     This.Shape.Base = value
 End Property
 
@@ -196,11 +196,11 @@ Private Property Get IBuiltUpIGirderComponent_Thickness() As Double
 End Property
 
 Private Property Let IBuiltUpIGirderComponent_Width(ByVal value As Double)
-    Me.Width = value
+    Me.width = value
 End Property
 
 Private Property Get IBuiltUpIGirderComponent_Width() As Double
-    IBuiltUpIGirderComponent_Width = Me.Width
+    IBuiltUpIGirderComponent_Width = Me.width
 End Property
 
 Private Function IBuiltUpIGirderComponent_Zx() As Double

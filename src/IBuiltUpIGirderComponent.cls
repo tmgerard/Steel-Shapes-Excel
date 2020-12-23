@@ -26,10 +26,10 @@ End Property
 Public Property Let Thickness(ByVal value As Double)
 End Property
 
-Public Property Get Width() As Double
+Public Property Get width() As Double
 End Property
 
-Public Property Let Width(ByVal value As Double)
+Public Property Let width(ByVal value As Double)
 End Property
 
 Public Function Area() As Double

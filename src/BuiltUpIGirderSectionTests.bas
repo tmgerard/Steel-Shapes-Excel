@@ -72,21 +72,21 @@ End Sub
 Private Sub TestInitialize()
     'This method runs before every test in the module..
     With topFlangePlate
-        .Width = topWidth
+        .width = topWidth
         .Thickness = topThickness
         .Orientation = Horizontal
         Set .Material = TensileMaterialFactory.Create(materialGetter, topMaterialSpec, topMaterialGrade)
     End With
     
     With WebPlate
-        .Width = webWidth
+        .width = webWidth
         .Thickness = webThickness
         .Orientation = Vertical
         Set .Material = TensileMaterialFactory.Create(materialGetter, webMaterialSpec, webMaterialGrade)
     End With
     
     With bottomFlangePlate
-        .Width = bottomWidth
+        .width = bottomWidth
         .Thickness = bottomThickness
         .Orientation = Horizontal
         Set .Material = TensileMaterialFactory.Create(materialGetter, bottomMaterialSpec, bottomMaterialGrade)
@@ -259,6 +259,24 @@ Private Sub TestCalculateSx()
 
     'Assert:
     Assert.IsTrue CompareDoubleRound(Expected, plateGirder.Sx, doubleComparePrecision)
+
+TestExit:
+    Exit Sub
+TestFail:
+    Assert.Fail "Test raised an error: #" & Err.Number & " - " & Err.Description
+End Sub
+
+'@TestMethod("Calculation")
+Private Sub TestCalculateSy()
+    On Error GoTo TestFail
+    
+    'Arrange:
+    Const Expected As Double = 54.0521
+
+    'Act:
+
+    'Assert:
+    Assert.IsTrue CompareDoubleRound(Expected, plateGirder.Sy, doubleComparePrecision)
 
 TestExit:
     Exit Sub

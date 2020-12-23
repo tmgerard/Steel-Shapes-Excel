@@ -38,7 +38,7 @@ Public Function Create(ByVal plateWidth As Double, _
     Dim newMember As PlateMemberSection
     Set newMember = New PlateMemberSection
     With newMember
-        .Width = plateWidth
+        .width = plateWidth
         .Thickness = plateThickness
         .Orientation = Orientation
         Set .Material = TensileMaterialFactory.Create(This.materialGetter, materialSpecification, materialGrade)
