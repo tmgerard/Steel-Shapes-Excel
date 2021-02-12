@@ -77,11 +77,11 @@ Public Function Cw() As Double
         Dim numerator As Double
         numerator = Me.FlangeCentroidToCentroid ^ 2 _
             * .TopFlange.Thickness * .BottomFlange.Thickness _
-            * .TopFlange.width ^ 3 * .BottomFlange.width ^ 3
+            * .TopFlange.PlateWIdth ^ 3 * .BottomFlange.PlateWIdth ^ 3
             
         Dim denominator As Double
-        denominator = 12 * (.TopFlange.Thickness * .TopFlange.width ^ 3 _
-            + .BottomFlange.Thickness * .BottomFlange.width ^ 3)
+        denominator = 12 * (.TopFlange.Thickness * .TopFlange.PlateWIdth ^ 3 _
+            + .BottomFlange.Thickness * .BottomFlange.PlateWIdth ^ 3)
     End With
     
     Cw = numerator / denominator
@@ -89,13 +89,13 @@ End Function
 
 Public Function Depth() As Double
     With This
-        Depth = .BottomFlange.Thickness + .TopFlange.Thickness + .WebPlate.width
+        Depth = .BottomFlange.Thickness + .TopFlange.Thickness + .WebPlate.PlateWIdth
     End With
 End Function
 
 Public Function FlangeCentroidToCentroid() As Double
     With This
-        FlangeCentroidToCentroid = .WebPlate.width + 0.5 * (.TopFlange.Thickness + .BottomFlange.Thickness)
+        FlangeCentroidToCentroid = .WebPlate.PlateWIdth + 0.5 * (.TopFlange.Thickness + .BottomFlange.Thickness)
     End With
 End Function
 
@@ -115,9 +115,9 @@ End Function
 Public Function J() As Double
     With This
         J = (1 / 3#) _
-            * (.TopFlange.Thickness ^ 3 * .TopFlange.width _
-            + .BottomFlange.Thickness ^ 3 * .BottomFlange.width _
-            + .WebPlate.width ^ 3 * .WebPlate.Thickness)
+            * (.TopFlange.Thickness ^ 3 * .TopFlange.PlateWIdth _
+            + .BottomFlange.Thickness ^ 3 * .BottomFlange.PlateWIdth _
+            + .WebPlate.PlateWIdth ^ 3 * .WebPlate.Thickness)
     End With
 End Function
 
@@ -140,7 +140,7 @@ Public Function Sx() As Double
 End Function
 
 Public Function Sy() As Double
-    Sy = Me.Iy / (0.5 * WorksheetFunction.Max(This.TopFlange.width, This.BottomFlange.width))
+    Sy = Me.Iy / (0.5 * WorksheetFunction.Max(This.TopFlange.PlateWIdth, This.BottomFlange.PlateWIdth))
 End Function
 
 '@Description "Distance from the bottom of the girder to the centroid of the girder"
@@ -155,7 +155,7 @@ Private Function AreaDistanceSum() As Double
         ' bottom flange component
         result = .BottomFlange.Area * (.BottomFlange.Thickness / 2#)
         ' web component
-        result = result + .WebPlate.Area * (.BottomFlange.Thickness + .WebPlate.width / 2#)
+        result = result + .WebPlate.Area * (.BottomFlange.Thickness + .WebPlate.PlateWIdth / 2#)
         ' top flange component
         result = result + .TopFlange.Area * (Me.Depth - .TopFlange.Thickness / 2#)
     End With
@@ -174,7 +174,7 @@ End Function
 Private Function WebPlateIx() As Double
     With This.WebPlate
         Dim Distance As Double
-        Distance = Math.Abs(Me.ToCentroid - (This.BottomFlange.Thickness + 0.5 * .width))
+        Distance = Math.Abs(Me.ToCentroid - (This.BottomFlange.Thickness + 0.5 * .PlateWIdth))
         WebPlateIx = ParallelAxisTheorem(.Ix, .Area, Distance)
     End With
 End Function

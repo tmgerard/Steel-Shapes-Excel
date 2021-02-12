@@ -29,7 +29,7 @@ Private Sub Class_Terminate()
     End With
 End Sub
 
-Public Function Create(ByVal plateWidth As Double, _
+Public Function Create(ByVal PlateWIdth As Double, _
     ByVal plateThickness As Double, _
     ByVal materialSpecification As String, _
     ByVal materialGrade As String, _
@@ -38,7 +38,7 @@ Public Function Create(ByVal plateWidth As Double, _
     Dim newMember As PlateMemberSection
     Set newMember = New PlateMemberSection
     With newMember
-        .width = plateWidth
+        .PlateWIdth = PlateWIdth
         .Thickness = plateThickness
         .Orientation = Orientation
         Set .Material = TensileMaterialFactory.Create(This.materialGetter, materialSpecification, materialGrade)
@@ -52,4 +52,5 @@ End Function
 Public Sub SetMaterialGetter(ByVal materialGetter As ITensileMaterialGetter)
     Set This.materialGetter = materialGetter
 End Sub
+
 

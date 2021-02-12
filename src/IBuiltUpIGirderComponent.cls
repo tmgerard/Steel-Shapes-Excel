@@ -26,10 +26,10 @@ End Property
 Public Property Let Thickness(ByVal value As Double)
 End Property
 
-Public Property Get width() As Double
+Public Property Get PlateWIdth() As Double
 End Property
 
-Public Property Let width(ByVal value As Double)
+Public Property Let PlateWIdth(ByVal value As Double)
 End Property
 
 Public Function Area() As Double

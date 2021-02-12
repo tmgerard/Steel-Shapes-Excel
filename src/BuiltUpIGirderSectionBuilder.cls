@@ -41,33 +41,33 @@ Public Function Build() As BuiltUpIGirderSection
     Set Build = This.girder
 End Function
 
-Public Sub SetTopFlange(ByVal width As Double, ByVal Thickness As Double, _
+Public Sub SetTopFlange(ByVal PlateWIdth As Double, ByVal Thickness As Double, _
     ByVal materialSpec As String, ByVal materialGrade As String)
     
     Dim plate As PlateMemberSection
-    Set plate = PlateMemberSectionFactory.Create(width, Thickness, materialSpec, materialGrade)
+    Set plate = PlateMemberSectionFactory.Create(PlateWIdth, Thickness, materialSpec, materialGrade)
     plate.Orientation = Horizontal
     This.topInitialized = True
     
     Set This.girder.TopFlange = plate
 End Sub
 
-Public Sub SetWebPlate(ByVal width As Double, ByVal Thickness As Double, _
+Public Sub SetWebPlate(ByVal PlateWIdth As Double, ByVal Thickness As Double, _
     ByVal materialSpec As String, ByVal materialGrade As String)
     
     Dim plate As PlateMemberSection
-    Set plate = PlateMemberSectionFactory.Create(width, Thickness, materialSpec, materialGrade)
+    Set plate = PlateMemberSectionFactory.Create(PlateWIdth, Thickness, materialSpec, materialGrade)
     plate.Orientation = Vertical
     This.webInitialized = True
     
     Set This.girder.WebPlate = plate
 End Sub
 
-Public Sub SetBottomFlange(ByVal width As Double, ByVal Thickness As Double, _
+Public Sub SetBottomFlange(ByVal PlateWIdth As Double, ByVal Thickness As Double, _
     ByVal materialSpec As String, ByVal materialGrade As String)
     
     Dim plate As PlateMemberSection
-    Set plate = PlateMemberSectionFactory.Create(width, Thickness, materialSpec, materialGrade)
+    Set plate = PlateMemberSectionFactory.Create(PlateWIdth, Thickness, materialSpec, materialGrade)
     plate.Orientation = Horizontal
     This.bottomInitialized = True
     
@@ -77,4 +77,5 @@ End Sub
 Private Function AllGirderElementsCreated() As Boolean
     AllGirderElementsCreated = This.topInitialized And This.webInitialized And This.bottomInitialized
 End Function
+
 

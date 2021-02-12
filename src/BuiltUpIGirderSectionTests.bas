@@ -68,21 +68,21 @@ Private Sub TestInitialize()
     Set materialGetter = New CSVTensileMaterialGetter
     
     With topFlangePlate
-        .width = topWidth
+        .PlateWIdth = topWidth
         .Thickness = topThickness
         .Orientation = Horizontal
         Set .Material = TensileMaterialFactory.Create(materialGetter, topMaterialSpec, topMaterialGrade)
     End With
     
     With WebPlate
-        .width = webWidth
+        .PlateWIdth = webWidth
         .Thickness = webThickness
         .Orientation = Vertical
         Set .Material = TensileMaterialFactory.Create(materialGetter, webMaterialSpec, webMaterialGrade)
     End With
     
     With bottomFlangePlate
-        .width = bottomWidth
+        .PlateWIdth = bottomWidth
         .Thickness = bottomThickness
         .Orientation = Horizontal
         Set .Material = TensileMaterialFactory.Create(materialGetter, bottomMaterialSpec, bottomMaterialGrade)
@@ -330,7 +330,7 @@ Private Sub TestTopPlateBadOrientation()
     Set newPlate = New PlateMemberSection
     With newPlate
         .Thickness = topThickness
-        .width = topWidth
+        .PlateWIdth = topWidth
         .Orientation = Vertical ' top plate should always be horizontal
     End With
 
@@ -360,7 +360,7 @@ Private Sub TestWebPlateBadOrientation()
     Set newPlate = New PlateMemberSection
     With newPlate
         .Thickness = webThickness
-        .width = webWidth
+        .PlateWIdth = webWidth
         .Orientation = Horizontal ' web plate should always be vertical
     End With
 
@@ -390,7 +390,7 @@ Private Sub TestBottomPlateBadOrientation()
     Set newPlate = New PlateMemberSection
     With newPlate
         .Thickness = bottomThickness
-        .width = bottomWidth
+        .PlateWIdth = bottomWidth
         .Orientation = Vertical ' top plate should always be horizontal
     End With
 

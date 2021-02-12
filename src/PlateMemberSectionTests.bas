@@ -48,7 +48,7 @@ End Sub
 Private Sub TestInitialize()
     'This method runs before every test in the module..
     With plate
-        .width = pWidth
+        .PlateWIdth = pWidth
         .Thickness = pThickness
         .Orientation = Horizontal
         Set .Material = TensileMaterialFactory.Create(materialGetter, materialSpec, materialGrade)
